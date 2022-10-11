@@ -1,6 +1,16 @@
-#read OS details and powershell version
+# ===============================================
+# ===============================================
+# *\src\OSRead.ps1
+# ===============================================
+# ===============================================
+#
+# read OS details (OS version, CPU, physic RAM and powershell version)
+# ported from project Win_HashCheck_Master
+# start time: 2022.10.10
+#
+# 2022.10.11 delete "[OS]>" before each print line, change cache path
 
-#print different color in one line
+# print different color in one line
 function Write-Color( [String[]]$Text , 
                       [ConsoleColor[]]$Color = "White" , 
                       [int]$StartTab = 0 , [int] $LinesBefore = 0 , [int] $LinesAfter = 0 , 
@@ -13,7 +23,7 @@ function Write-Color( [String[]]$Text ,
             Write-Host "`n" -NoNewline 
         } 
     } 
-    #Add empty line before
+    # Add empty line before
     if ( $StartTab -ne 0 ) 
     { 
         for ( $i = 0 ; $i -lt $StartTab ; $i++ )
@@ -21,7 +31,7 @@ function Write-Color( [String[]]$Text ,
             Write-Host "`t" -NoNewLine 
         }
     } 
-    #Add TABS before text
+    # Add TABS before text
     if ( $Color.Count -ge $Text.Count )
     {
         for ( $i = 0 ; $i -lt $Text.Length ; $i++ )
@@ -48,7 +58,7 @@ function Write-Color( [String[]]$Text ,
                 Write-Host "`n"
             }
         } 
-        #Add empty line after
+        # Add empty line after
         if ( $LogFile -ne "" )
         {
             $TextToFile = ""
@@ -60,18 +70,24 @@ function Write-Color( [String[]]$Text ,
         }
 }
 
-$logPath = "$PSScriptRoot\certutil-precheckOutputLOG"
-#get OS version
+$logPath = "$PSScriptRoot\OSRead_Cache"
+# create cache
+
 Get-CimInstance -ClassName Win32_OperatingSystem | Select-Object -property Version | Out-file $logPath
-Write-Color -Text "[OS]> OS Version: " , $( ( Get-Content $logPath -Tail 3 )[-3] ) -Color white , yellow
-#get CPU name
+Write-Color -Text "OS Version: " , $( ( Get-Content $logPath -Tail 3 )[-3] ) -Color white , yellow
+# get OS version
+
 Get-CimInstance -ClassName Win32_Processor | Select-Object -property Name | Out-file $logPath
-Write-Color -Text "[OS]> CPU: " , $( ( Get-Content $logPath -Tail 3 )[-3] ) -Color white , yellow
-#get RAM
+Write-Color -Text "CPU: " , $( ( Get-Content $logPath -Tail 3 )[-3] ) -Color white , yellow
+# get CPU name
+
 $RAMinTotal = ( ( Get-CimInstance Win32_PhysicalMemory | Measure-Object -Property capacity -Sum ).sum / 1gb )
-Write-Color -Text "[OS]> Physic RAM: " , $RAMinTotal , "GB" -Color white , yellow , yellow
-#get powershell version
+Write-Color -Text "Physic RAM: " , $RAMinTotal , "GB" -Color white , yellow , yellow
+# get physic RAM
+
 $host | Select-Object -property Version | Out-file $logPath
-Write-Color -Text "[OS]> Powershell Version: " , $( ( Get-Content $logPath -Tail 3 )[-3] ) -Color white , yellow
-#delete log
+Write-Color -Text "Powershell Version: " , $( ( Get-Content $logPath -Tail 3 )[-3] ) -Color white , yellow
+# get powershell version
+
 Remove-Item $logPath
+# delete cache
