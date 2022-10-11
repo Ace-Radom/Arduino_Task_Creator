@@ -1,14 +1,24 @@
+# ===============================================
+# ===============================================
+# *\CMakeLists.txt
+# ===============================================
+# ===============================================
+
 cmake_minimum_required(VERSION 3.10)
 
 project(Arduino_Task_Creator)
 
-add_subdirectory(src bin)
+add_subdirectory(src)
+# link .\src
 
 include_directories(${PROJECT_SOURCE_DIR}/include)
 include_directories(${PROJECT_SOURCE_DIR}/lib/jsoncpp)
+# link .\lib and .\include
 
 set(SRC_MAIN main.cpp)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin)
+# set .exe output folder as .\bin
 
 add_executable(Arduino_Task ${SRC_LIST} ${SRC_MAIN})
+# link src files and main program
