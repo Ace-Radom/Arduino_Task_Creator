@@ -9,6 +9,13 @@
  * 
  * 2022.10.11 finish function \c setw_print_help and tested (passed)
  * 2022.10.12 finish function \c show_help and tested (passed)
+ *            fixed: in function \c show_help - \throw std::out_of_range by std::string::erase
+ *                                              this program used __cwd__ to point cmdlib.json
+ *                                              but error occurs when opening Arduino_Task.exe
+ *                                              from other folders by powershell (e.g Desktop)
+ *                                              that's because in this case in __cwd__ there's
+ *                                              no "\bin", therefore erase causes mem problems
+ *                   change to use __exepath__ in @a collectinfo.h (namespace clinfo) to point cmdlib.json and that fixes this bug
  */
 
 #include<cmdlib.h>
