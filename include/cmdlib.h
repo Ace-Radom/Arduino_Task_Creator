@@ -7,6 +7,8 @@
  * 
  * \brief give back commands expressions (show help by -?), connect @a cmdlib.json
  * \def \c namespace \c cmdlib
+ *      \def \c void \c show_help show help page in shell
+ *      \def \c void \c setw_print_help print options and expressions in help page in order
  * 
  * start time: 2022.10.06
  * 
