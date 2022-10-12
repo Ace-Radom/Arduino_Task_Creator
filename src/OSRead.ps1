@@ -9,6 +9,8 @@
 # start time: 2022.10.10
 #
 # 2022.10.11 delete "[OS]>" before each print line, change cache path
+# 2022.10.12 set this file to "usused" status
+#            function Print_SystemInfo is no longer using this script (in header .\include\collectinfo.h)
 
 # print different color in one line
 function Write-Color( [String[]]$Text , 
