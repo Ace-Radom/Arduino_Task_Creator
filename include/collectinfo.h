@@ -25,6 +25,7 @@
  *                 \c __cwd__ 
  *                 \c __NOW__ 
  *                 \c __ui_language__ defs to @a collectinfo.cpp
+ *            delete function \c Print_SystemInfo
  */
 
 #ifndef _COLLECTINFO_H_
@@ -66,9 +67,9 @@ namespace clinfo{
      * \brief Print System infos (CPU, Operating system, Physic RAM, Powershell edition), requires Powershell scripts
      * \return none, but print the infos @a OSRead.ps1 got
      */
-    void Print_SystemInfo();
+//  void Print_SystemInfo();
 
-    void preprocess();
+//  void preprocess();
     
 } // namespace clinfo
 
