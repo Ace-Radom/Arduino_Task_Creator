@@ -11,7 +11,8 @@
  *      \def \c __cwd__ current working dirctory for Arduino_Task.exe
  *      \def \c __NOW__ system time now
  *      \def \c __ui_language__ system ui language
- *      \def \c void \c Print_SystemInfo print system infos @a OSRead.ps1 got
+ *      \def \c void \c Print_SystemInfo print system infos @a OSRead.ps1 got (this function is not be-used any longer)
+ *      \def \c __exepath__ Arduino_Task.exe path
  * 
  * start time: 2022.10.06
  * 
@@ -26,6 +27,7 @@
  *                 \c __NOW__ 
  *                 \c __ui_language__ defs to @a collectinfo.cpp
  *            delete function \c Print_SystemInfo
+ *            new \def \c __exepath__
  */
 
 #ifndef _COLLECTINFO_H_
@@ -36,6 +38,9 @@
 #include<stdint.h>
 #include<windows.h>
 #include<winnls.h>
+//#include<string>
+//#include<tchar.h>
+#include<stdlib.h>
 //#include<cstdio>
 
 #define zh_CN 0x0804 // if system ui language is chinese symplified, __ui_language__ will be same as this number
@@ -43,9 +48,10 @@
 namespace clinfo{
 
     extern char* __cwd__; // current working dirctory
+    extern char* __exepath__; // Arduino_Task.exe path
 
     extern time_t __NOW__; // system time now
-    extern tm *__ltn__; // local time now
+    extern tm* __ltn__; // local time now
     extern LANGID __ui_language__; // get system ui language
 
 /**
