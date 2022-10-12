@@ -7,7 +7,7 @@
  * 
  * start time: 2022.10.11
  * 
- * 2022.10.11 connect \c void \c Print_SystemInfo to @a .\lib\collectinfo.h
+ * 2022.10.11 finish function \c Print_SystemInfo (may need to re-write)
  */
 
 #include"collectinfo.h"
