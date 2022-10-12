@@ -21,7 +21,7 @@ void cmdlib::show_help(){
     Json::Reader rJson; // json reader
     std::ifstream rfile; // read file
     
-    std::string cmdlib_json_path( clinfo::__cwd__ ); // get cmdlib.json path (begin with Arduino_Task.exe path)
+    std::string cmdlib_json_path( clinfo::__exepath__ ); // get cmdlib.json path (begin with Arduino_Task.exe path)
 
     switch ( clinfo::__ui_language__ ){  // switch system ui language
         case zh_CN:
