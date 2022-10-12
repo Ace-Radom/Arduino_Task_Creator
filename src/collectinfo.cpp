@@ -16,3 +16,8 @@ void clinfo::Print_SystemInfo(){
     system( "powershell .\\src\\OSRead.ps1" ); // run powershell script
     return;
 }
+
+char* clinfo::__cwd__ = getcwd( NULL , 0 );
+time_t clinfo::__NOW__ = time( 0 );
+tm* clinfo::__ltn__ = localtime( &__NOW__ );
+LANGID clinfo::__ui_language__ = GetUserDefaultUILanguage();
