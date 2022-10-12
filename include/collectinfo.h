@@ -21,6 +21,10 @@
  *                          \c __ui_language__
  *                          \c void \c Print_SystemInfo
  * 2022.10.12 add \c extern before all vars in \c namespace \c clinfo
+ *            move \c __ltn__ 
+ *                 \c __cwd__ 
+ *                 \c __NOW__ 
+ *                 \c __ui_language__ defs to @a collectinfo.cpp
  */
 
 #ifndef _COLLECTINFO_H_
