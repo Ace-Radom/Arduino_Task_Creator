@@ -10,7 +10,9 @@
  * 
  * start time: 2022.10.06
  * 
- * 2022.10.11 change \c Json::Value name from \c cmdlib \c cmdlib_json because of appeared errors in @a mingw32-make (same name)
+ * 2022.10.12 move \c Json::Value \c codlib_json 
+ *                 \c Json::Reader \c rJson 
+ *                 \c std::ifstream \c rfile to \c show_help function in @a cmdlib.cpp
  */
 
 #ifndef _CMDLIB_H_
