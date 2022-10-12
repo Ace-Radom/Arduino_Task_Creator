@@ -20,6 +20,7 @@
  *                          \c __NOW__ 
  *                          \c __ui_language__
  *                          \c void \c Print_SystemInfo
+ * 2022.10.12 add \c extern before all vars in \c namespace \c clinfo
  */
 
 #ifndef _COLLECTINFO_H_
@@ -36,11 +37,11 @@
 
 namespace clinfo{
 
-    char* __cwd__ = getcwd( NULL , 0 ); // current working dirctory
+    extern char* __cwd__; // current working dirctory
 
-    time_t __NOW__ = time( 0 ); // system time now
-    tm *__ltn__ = localtime( &__NOW__ ); // local time now
-    LANGID __ui_language__ = GetUserDefaultUILanguage(); // get system ui language
+    extern time_t __NOW__; // system time now
+    extern tm *__ltn__; // local time now
+    extern LANGID __ui_language__; // get system ui language
 
 /**
  * \brief unused struct \c clinfo_ltn_sort
@@ -62,6 +63,8 @@ namespace clinfo{
      * \return none, but print the infos @a OSRead.ps1 got
      */
     void Print_SystemInfo();
+
+    void preprocess();
     
 } // namespace clinfo
 
