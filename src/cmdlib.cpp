@@ -8,6 +8,7 @@
  * start time 2022.10.11
  * 
  * 2022.10.11 finish function \c setw_print_help and tested (passed)
+ * 2022.10.12 finish function \c show_help and tested (passed)
  */
 
 #include<cmdlib.h>
@@ -16,15 +17,31 @@
  * \brief show help page in shell
  */
 void cmdlib::show_help(){
-
     Json::Value cmdlib_json; // save data read from cmdlib.json
     Json::Reader rJson; // json reader
-    std::ifstream rfile; // read file (cmdlib.json)
+    std::ifstream rfile; // read file
     
     std::string cmdlib_json_path( clinfo::__cwd__ ); // get cmdlib.json path (begin with Arduino_Task.exe path)
-    cmdlib_json_path.erase( cmdlib_json_path.rfind( "\\bin" ) ).append( "\\json\\cmdlib.json" );
-    // delete "\\bin" in __cwd__, add "\\json\\cmdlib.json" to point to cmdlib.json
+
+    switch ( clinfo::__ui_language__ ){  // switch system ui language
+        case zh_CN:
+            cmdlib_json_path.erase( cmdlib_json_path.rfind( "\\bin" ) ).append( "\\json\\cmdlib_zhCN.json" );
+            // point to .\json\cmdlib_zhCN.json
+
+//          cmdlib_json_path.erase( cmdlib_json_path.rfind( "\\bin" ) ).append( "\\json\\cmdlib_en.json" );
+            // this is a debug line for testing .\json\cmdlib_en.json
+
+            break;
     
+        default:
+            cmdlib_json_path.erase( cmdlib_json_path.rfind( "\\bin" ) ).append( "\\json\\cmdlib_en.json" );
+            // point to .\json\cmdlib_en.json
+            break;
+    }
+    // delete "\\bin" in __cwd__, add .json path to point to cmdlib.json in different languages
+
+#pragma region print_help
+
     rfile.open( cmdlib_json_path.c_str() , std::ios::in );
     rJson.parse( rfile , cmdlib_json , 0 );
     // open cmdlib.json
@@ -32,29 +49,27 @@ void cmdlib::show_help(){
     rfile.close();
     // release rfile
 
-#pragma region print_help
-
 #define _option_ 0
 #define _expression_ 1
 
-    std::string language_tag; // save the language-tag of the help page
-    // it depends on system ui language (if it's zh_CN then will show chinese expression)
-
-    if ( clinfo::__ui_language__ == zh_CN ) // is using zh_CN as system ui language
-    {
-        language_tag = "Chinese_Expressions"; // it's the tag of the array includes all chinese expressions
-    }
-    else
-    {
-        language_tag = "English_Expressions"; // it's the tag of the array includes all english expressions
-    }
-
+    setw_print_help( cmdlib_json["no_option"][_option_].asString() , cmdlib_json["no_option"][_expression_].asString() );
+    setw_print_help( cmdlib_json["-?"][_option_].asString() , cmdlib_json["-?"][_expression_].asString() );
+    setw_print_help( cmdlib_json["-v"][_option_].asString() , cmdlib_json["-v"][_expression_].asString() );
+    setw_print_help( cmdlib_json["-u"][_option_].asString() , cmdlib_json["-u"][_expression_].asString() );
+    setw_print_help( cmdlib_json["-t"][_option_].asString() , cmdlib_json["-t"][_expression_].asString() );
+    setw_print_help( cmdlib_json["-b"][_option_].asString() , cmdlib_json["-b"][_expression_].asString() );
+    setw_print_help( cmdlib_json["-p"][_option_].asString() , cmdlib_json["-p"][_expression_].asString() );
+    // print all options' comment
 
 #undef _option_
 #undef _expression_
 
+    cmdlib_json.clear();
+    // release cmdlib_json
+
 #pragma endregion print_help
 
+    return;
 }
 
 void cmdlib::setw_print_help( std::string __option , std::string __expression ){
