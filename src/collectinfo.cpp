@@ -20,6 +20,8 @@ void clinfo::Print_SystemInfo(){
 */
 
 char* clinfo::__cwd__ = getcwd( NULL , 0 );
+char* clinfo::__exepath__ = _pgmptr;
+
 time_t clinfo::__NOW__ = time( 0 );
 tm* clinfo::__ltn__ = localtime( &__NOW__ );
 LANGID clinfo::__ui_language__ = GetUserDefaultUILanguage();
