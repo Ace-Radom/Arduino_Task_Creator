@@ -1,0 +1,30 @@
+{
+    "no_option": [
+        "no option",
+        "Show Help (same as -?)"
+    ],
+    "-?": [
+        "-?", 
+        "Show Help (same as no option)"
+    ],
+    "-v": [
+        "-v xxx",
+        "verify Arduino program"
+    ],
+    "-u": [
+        "-u xxx",
+        "upload Arduino program"
+    ],
+    "-t": [
+        "-t xxx",
+        "open task file folder (to find arduino.json here)"
+    ],
+    "-b": [
+        "-b xxx",
+        "set Arduino board (e.g. arduino:avr:uno)"
+    ],
+    "-p":[
+        "-p xxx",
+        "set serial pot (e.g. COM3)"
+    ]
+}
