@@ -29,6 +29,6 @@
     ],
     "-p":[
         "-p xxx",
-        "set serial pot (e.g. COM3)"
+        "set serial port (e.g. COM3)"
     ]
 }
