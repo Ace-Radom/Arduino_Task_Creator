@@ -15,6 +15,9 @@
  * 2022.10.12 move \c Json::Value \c codlib_json 
  *                 \c Json::Reader \c rJson 
  *                 \c std::ifstream \c rfile to \c show_help function in @a cmdlib.cpp
+ * 2022.10.13 add \c gflags lib
+ *            new \def gflags options, defined in @a cmdlib.cpp region \c gflags_def
+ *                                     declared in @a cmdlib.h region \c gflags_dec
  */
 
 #ifndef _CMDLIB_H_
@@ -27,6 +30,7 @@
 #include<fstream>
 
 #include<json/json.h>
+#include<gflags/gflags.h>
 #include<collectinfo.h>
 
 /*
@@ -36,6 +40,17 @@
 
 #endif
  */
+
+#pragma region gflags_dec
+
+DECLARE_bool( h );
+DECLARE_string( v );
+DECLARE_string( u );
+DECLARE_string( t );
+DECLARE_string( b );
+DECLARE_string( p );
+
+#pragma endregion gflags_dec
 
 namespace cmdlib{
 
