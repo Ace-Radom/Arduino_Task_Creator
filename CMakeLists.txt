@@ -16,7 +16,11 @@ include_directories(${PROJECT_SOURCE_DIR}/include)
 
 include_directories(${PROJECT_SOURCE_DIR}/lib/jsoncpp/include)
 link_directories(${PROJECT_SOURCE_DIR}/lib/jsoncpp/lib)
-# include headers and link static lib in .\lib\jsoncpp
+# include headers and link jsoncpp static lib
+
+include_directories(${PROJECT_SOURCE_DIR}/lib/gflags/include)
+link_directories(${PROJECT_SOURCE_DIR}/lib/gflags/lib)
+# include headers and link gflags static lib 
 
 #set(SRC_MAIN main.cpp)
 
@@ -29,5 +33,5 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin)
 add_executable(Arduino_Task ${SRC_LIST} ${SRC_MAIN})
 # link src files and main program
 
-target_link_libraries(Arduino_Task libjsoncpp.a libjsoncpp.dll.a)
-# link jsoncpp static lib
+target_link_libraries(Arduino_Task libjsoncpp.a libjsoncpp.dll.a libgflags_static.a libgflags_nothreads_static.a)
+# link jsoncpp static lib and gflags static lib to target
