@@ -20,6 +20,17 @@
 
 #include<cmdlib.h>
 
+#pragma region gflags_def
+
+DEFINE_bool( h , false , "-? [bool] show help page" );
+DEFINE_string( v , "" , "-v [std::string / file name] verify Arduino program" );
+DEFINE_string( u , "" , "-u [std::string / file name] upload Arduino program" );
+DEFINE_string( t , "" , "-t [std::string / file name] open task file folder (to find arduino.json here)" );
+DEFINE_string( b , "" , "-b [std::string / board type] set Arduino board" );
+DEFINE_string( p , "" , "-b [std::string / serial port] set serial port" );
+
+#pragma endregion gflags_def
+
 /**
  * \brief show help page in shell
  */
@@ -61,6 +72,7 @@ void cmdlib::show_help(){
 
     setw_print_help( cmdlib_json["no_option"][_option_].asString() , cmdlib_json["no_option"][_expression_].asString() );
     setw_print_help( cmdlib_json["-?"][_option_].asString() , cmdlib_json["-?"][_expression_].asString() );
+    setw_print_help( cmdlib_json["-h"][_option_].asString() , cmdlib_json["-h"][_expression_].asString() );
     setw_print_help( cmdlib_json["-v"][_option_].asString() , cmdlib_json["-v"][_expression_].asString() );
     setw_print_help( cmdlib_json["-u"][_option_].asString() , cmdlib_json["-u"][_expression_].asString() );
     setw_print_help( cmdlib_json["-t"][_option_].asString() , cmdlib_json["-t"][_expression_].asString() );
