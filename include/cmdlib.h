@@ -15,7 +15,7 @@
  * 2022.10.12 move \c Json::Value \c codlib_json 
  *                 \c Json::Reader \c rJson 
  *                 \c std::ifstream \c rfile to \c show_help function in @a cmdlib.cpp
- * 2022.10.13 add \c gflags lib
+ * 2022.10.13 new \include gflags lib (in @a gflags.h for analysising options)
  *            new \def gflags options, defined in @a cmdlib.cpp region \c gflags_def
  *                                     declared in @a cmdlib.h region \c gflags_dec
  */
