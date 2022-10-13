@@ -91,6 +91,12 @@ void cmdlib::show_help(){
     return;
 }
 
+/**
+ * \brief print options and expressions in help page in order
+ * 
+ * \param __option the option needs to print
+ * \param __expression the expression of this option
+ */
 void cmdlib::setw_print_help( std::string __option , std::string __expression ){
     std::cout << "  " << std::left << std::setw( 12 ) << __option;
     std::cout                                                     << __expression << std::endl;
