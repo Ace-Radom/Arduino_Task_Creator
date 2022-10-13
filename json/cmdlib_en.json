@@ -1,11 +1,15 @@
 {
     "no_option": [
         "no option",
-        "Show Help (same as -?)"
+        "Show Help (same as -? and -h)"
     ],
     "-?": [
         "-?", 
-        "Show Help (same as no option)"
+        "Show Help (same as no option and -h)"
+    ],
+    "-h": [
+        "-h",
+        "Show Help (same as -? and no option)"
     ],
     "-v": [
         "-v xxx",
