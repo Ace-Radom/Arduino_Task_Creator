@@ -22,6 +22,7 @@
 
 #ifndef _FILEPATH_H_
 #define _FINEPATH_H_
+#pragma once
 
 #include<collectinfo.h>
 #include<string>
@@ -33,6 +34,8 @@
 #define F_READ_PERMISSION 4
 // 'F' means file here
 // access-mode for access function
+
+
 
 namespace path{
     bool is_relative_path( PATH_t );
