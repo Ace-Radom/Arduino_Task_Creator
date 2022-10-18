@@ -28,6 +28,8 @@
  *          \def \c is_serial_port_set judge if serial port is set
  *          \def \c is_arduino_file_set judge if arduino program file is set
  *          \def \c is_verify_or_upload judge to use which command (status as \c _verify_ or \c _upload_ which defed here)
+ *          \def \c arduino_file_path arduino program file path
+ *          \def \c taskfile_path task file path
  * 
  * start time: 2022.10.11
  * 
@@ -40,6 +42,7 @@
 
 #include<string>
 #include<collectinfo.h>
+#include<filepath.h>
 
 #define _verify_ 0x00
 #define _upload_ 0x01
@@ -79,7 +82,7 @@ class ARTask{
 
 #pragma endregion status
 
-        PATH_t file_path;
+        PATH_t arduino_file_path;
         PATH_t taskfile_path;
 
 }; // class ARTast

@@ -26,6 +26,7 @@ ARTask::ARTask(){
  */
 void ARTask::change_board( std::string _board_type ){
     arduino_board = _board_type;
+    is_board_set = _SET_;
     return;
 }
 
@@ -35,14 +36,48 @@ void ARTask::change_board( std::string _board_type ){
  */
 void ARTask::change_serial_port( std::string _port ){
     serial_port = _port;
+    is_serial_port_set = _SET_;
     return;
 }
 /**
  * \brief set taskfile path in \c ARTask class
- * \param _path the path of the taskfile ()
+ * \param _path the path of the taskfile
  */
 void ARTask::set_taskfile( PATH_t _path ){
+    if ( path::is_relative_path( _path ) )
+    {
+        taskfile_path = path::_fullpath( _path );
+        is_using_taskfile = _USING_;
+        return;
+    }
+    taskfile_path = _path;
+    is_using_taskfile = _USING_;
+    return;
+}
 
+/**
+ * \brief set arduino program file path in \c ARTask class
+ * \param _path the path of the arduino program
+ */
+void ARTask::set_arduino_file( PATH_t _path ){
+    if ( path::is_relative_path( _path ) )
+    {
+        arduino_file_path = path::_fullpath( _path );
+        is_arduino_file_set = _SET_;
+        return;
+    }
+    arduino_file_path = _path;
+    is_arduino_file_set = _SET_;
+    return;
+}
+
+/**
+ * \brief set program mode (verify or upload)
+ * \param _option \c _verify_ or \c _upload_
+ */
+void ARTask::set_verify_or_upload( STATUS_t _option ){
+    is_verify_or_upload = _option;
+    return;
 }
 
 #pragma endregion public_function
@@ -55,7 +90,7 @@ void ARTask::set_taskfile( PATH_t _path ){
 void ARTask::pre_set(){
     arduino_board.clear();
     serial_port.clear();
-    file_path.clear();
+    arduino_file_path.clear();
     taskfile_path.clear();
 
     is_help_triggered   = _NOT_USING_;
