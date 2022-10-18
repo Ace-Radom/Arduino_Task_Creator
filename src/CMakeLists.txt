@@ -4,7 +4,7 @@
 # ===============================================
 # ===============================================
 
-set(src ${PROJECT_SOURCE_DIR}/src/cmdlib.cpp ${PROJECT_SOURCE_DIR}/src/collectinfo.cpp ${PROJECT_SOURCE_DIR}/src/artask.cpp)
+set(src ${PROJECT_SOURCE_DIR}/src/cmdlib.cpp ${PROJECT_SOURCE_DIR}/src/collectinfo.cpp ${PROJECT_SOURCE_DIR}/src/artask.cpp ${PROJECT_SOURCE_DIR}/src/filepath.cpp)
 # set src
 
 message(STATUS ${src})
