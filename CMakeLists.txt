@@ -34,6 +34,8 @@ link_directories(${PROJECT_SOURCE_DIR}/lib/CSerialPort/lib)
 set(SRC_MAIN test.cpp)
 # use to test functions
 
+message(STATUS ${SRC_MAIN})
+
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin)
 # set .exe output folder as .\bin
 
