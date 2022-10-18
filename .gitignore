@@ -1,7 +1,20 @@
+# ===============================================
+# ===============================================
+# *\.gitignore
+# ===============================================
+# ===============================================
+
 .vscode
+# shield .vscode folder created by vscode
 
 build
+# shield build folder created by cmake tools in vscode (used to cmake)
+
+bin
+# shield bin folder for .exe files
 
 test.cpp
+# shield test program
 
 Arduino_Task_Creator.code-workspace
+# shield vscode workspace file
