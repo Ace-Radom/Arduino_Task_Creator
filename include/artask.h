@@ -27,10 +27,12 @@
  *          \def \c is_using_taskfile judge if is using task file or not
  *          \def \c is_board_set judge if arduino board is set
  *          \def \c is_serial_port_set judge if serial port is set
- *          \def \c is_file_set judge if arduino program file is set
+ *          \def \c is_arduino_file_set judge if arduino program file is set
  *          \def \c is_verify_or_upload judge to use which command (status as \c _verify_ or \c _upload_ which defed here)
  * 
  * start time: 2022.10.11
+ * 
+ * 2022.10.18 change var \c is_file_set name to \c is_arduino_file_set due to missunderstanding
  */
 
 #ifndef _ARTASK_H_
@@ -57,6 +59,9 @@ class ARTask{
         
         void change_board( std::string );
         void change_serial_port( std::string );
+        void set_taskfile( PATH_t );
+        void set_arduino_file( PATH_t );
+        void set_verify_or_upload( STATUS_t );
 
     private:
         void pre_set();
@@ -70,7 +75,7 @@ class ARTask{
         STATUS_t is_using_taskfile;
         STATUS_t is_board_set;
         STATUS_t is_serial_port_set;
-        STATUS_t is_file_set;
+        STATUS_t is_arduino_file_set;
         STATUS_t is_verify_or_upload;
 
 #pragma endregion status
