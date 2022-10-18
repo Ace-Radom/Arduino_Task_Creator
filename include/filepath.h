@@ -26,8 +26,8 @@
 #include<string>
 
 namespace path{
-    bool is_relative_path( std::string );
-    std::string _fullpath( std::string );
+    bool is_relative_path( PATH_t );
+    PATH_t _fullpath( PATH_t );
 
     struct fp{ // file permission
         bool existence;
@@ -36,7 +36,7 @@ namespace path{
         bool read_permission;
     };
 
-    void get_file_permission( std::string , fp & );
+    void get_file_permission( PATH_t , fp & );
 }; // namespace path
 
 #endif
