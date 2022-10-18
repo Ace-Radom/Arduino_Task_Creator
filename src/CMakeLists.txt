@@ -4,7 +4,8 @@
 # ===============================================
 # ===============================================
 
-set(src ${PROJECT_SOURCE_DIR}/src/cmdlib.cpp ${PROJECT_SOURCE_DIR}/src/collectinfo.cpp)
+set(src ${PROJECT_SOURCE_DIR}/src/cmdlib.cpp ${PROJECT_SOURCE_DIR}/src/collectinfo.cpp ${PROJECT_SOURCE_DIR}/src/artask.cpp)
+# set src list
 
 message(STATUS ${src})
 # show src list

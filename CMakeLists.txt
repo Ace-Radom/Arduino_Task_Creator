@@ -25,6 +25,10 @@ link_directories(${PROJECT_SOURCE_DIR}/lib/jsoncpp/lib)
 find_package(gflags REQUIRED)
 # find gflags package
 
+include_directories(${PROJECT_SOURCE_DIR}/lib/CSerialPort/include)
+link_directories(${PROJECT_SOURCE_DIR}/lib/CSerialPort/lib)
+# include headers and link CSerialPort static lib
+
 #set(SRC_MAIN main.cpp)
 
 set(SRC_MAIN test.cpp)
@@ -36,5 +40,5 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin)
 add_executable(Arduino_Task ${SRC_LIST} ${SRC_MAIN})
 # link src files and main program
 
-target_link_libraries(Arduino_Task libjsoncpp.a libjsoncpp.dll.a gflags)
-# link jsoncpp static lib and gflags static lib to target
+target_link_libraries(Arduino_Task libjsoncpp.a libjsoncpp.dll.a gflags liblibcserialport.dll.a)
+# link jsoncpp static lib, gflags static lib and CSerialPort static libto target
