@@ -7,7 +7,6 @@
  * 
  * \brief main library for Arduino_Task_Creator_Project
  * \def \c STATUS_t   = \c bool
- * \def \c PATH_t     = \c std::string
  * \def \c _verify_   = \c 0x00
  * \def \c _upload_   = \c 0x01
  * \def \c _SET_      = \c true
@@ -33,6 +32,7 @@
  * start time: 2022.10.11
  * 
  * 2022.10.18 change var \c is_file_set name to \c is_arduino_file_set due to missunderstanding
+ *            move \c PATH_t to @a collectinfo.h
  */
 
 #ifndef _ARTASK_H_
@@ -40,9 +40,6 @@
 
 #include<string>
 #include<collectinfo.h>
-
-typedef bool STATUS_t;
-typedef std::string PATH_t;
 
 #define _verify_ 0x00
 #define _upload_ 0x01
@@ -52,6 +49,8 @@ typedef std::string PATH_t;
 
 #define _NOT_USING_ false
 #define _USING_ true
+
+typedef bool STATUS_t;
 
 class ARTask{
     public:

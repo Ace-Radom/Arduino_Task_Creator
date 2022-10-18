@@ -13,6 +13,7 @@
  *      \def \c __ui_language__ system ui language
  *      \def \c void \c Print_SystemInfo print system infos @a OSRead.ps1 got (this function is not be-used any longer)
  *      \def \c __exepath__ Arduino_Task.exe path
+ * \def \c PATH_t = \c std::string
  * 
  * start time: 2022.10.06
  * 
@@ -28,6 +29,7 @@
  *                 \c __ui_language__ defs to @a collectinfo.cpp
  *            delete function \c Print_SystemInfo
  *            new \def \c __exepath__
+ * 2022.10.18 move \c PATH_t from @a artask.h to here
  */
 
 #ifndef _COLLECTINFO_H_
@@ -38,12 +40,14 @@
 #include<stdint.h>
 #include<windows.h>
 #include<winnls.h>
-//#include<string>
+#include<string>
 //#include<tchar.h>
 #include<stdlib.h>
 //#include<cstdio>
 
 #define zh_CN 0x0804 // if system ui language is chinese symplified, __ui_language__ will be same as this number
+
+typedef std::string PATH_t;
 
 namespace clinfo{
 
