@@ -51,6 +51,7 @@ void path::get_file_permission( PATH_t _path , fp &_fp ){
                                                             : _fp.write_permission = false;
     ( access( _path.c_str() , F_READ_PERMISSION )    == 0 ) ? _fp.read_permission = true
                                                             : _fp.read_permission = false;
+    // check user permission on this file
 
     /**
      * access function in @a io.h
