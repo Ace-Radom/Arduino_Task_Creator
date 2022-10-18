@@ -15,6 +15,7 @@
  *           \def \c execute_permission
  *           \def \c write_permission
  *           \def \c read_permission
+ *      \def \c void \c get_file_permission get the permission this user has on this file
  * 
  * start time 2022.10.18
  */
@@ -24,6 +25,14 @@
 
 #include<collectinfo.h>
 #include<string>
+#include<io.h>
+
+#define F_EXISTENCE 0
+#define F_EXECUTE_PERMISSION 1
+#define F_WRITE_PERMISSION 2
+#define F_READ_PERMISSION 4
+// 'F' means file here
+// access-mode for access function
 
 namespace path{
     bool is_relative_path( PATH_t );
