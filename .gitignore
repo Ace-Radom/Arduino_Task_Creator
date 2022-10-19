@@ -13,8 +13,11 @@ build
 bin
 # shield bin folder for .exe files
 
-test.cpp
+test.*
 # shield test program
 
-Arduino_Task_Creator.code-workspace
+*.code-workspace
 # shield vscode workspace file
+
+*.log
+# shield log file
