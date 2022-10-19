@@ -45,6 +45,17 @@
 #include<stdlib.h>
 //#include<cstdio>
 
+#if defined( __clang__ ) || defined( __GNUC__ ) // is using clang or gcc compiler
+
+    #define CPP_STANDARD __cplusplus
+
+#elif defined( _MSC_VER ) // is using msvc compiler
+
+    #define CPP_STANDARD _MSVC_LANG
+
+#endif
+// get C++ standard in use
+
 #define zh_CN 0x0804 // if system ui language is chinese symplified, __ui_language__ will be same as this number
 
 typedef std::string PATH_t;
