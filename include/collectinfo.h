@@ -14,6 +14,7 @@
  *      \def \c void \c Print_SystemInfo print system infos @a OSRead.ps1 got (this function is not be-used any longer)
  *      \def \c __exepath__ Arduino_Task.exe path
  * \def \c PATH_t = \c std::string
+ * \def \c CPP_STANDARD cpp standard compiler uses
  * 
  * start time: 2022.10.06
  * 
@@ -30,6 +31,7 @@
  *            delete function \c Print_SystemInfo
  *            new \def \c __exepath__
  * 2022.10.18 move \c PATH_t from @a artask.h to here
+ * 2022.10.19 new \def \c CPP_STANDARD
  */
 
 #ifndef _COLLECTINFO_H_
