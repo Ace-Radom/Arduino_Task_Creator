@@ -35,8 +35,6 @@
 // 'F' means file here
 // access-mode for access function
 
-
-
 namespace path{
     bool is_relative_path( PATH_t );
     PATH_t _fullpath( PATH_t );
