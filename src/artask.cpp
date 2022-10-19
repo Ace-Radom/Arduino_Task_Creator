@@ -80,6 +80,63 @@ void ARTask::set_verify_or_upload( STATUS_t _option ){
     return;
 }
 
+/**
+ * \brief read board type, serial port, arduino program file path from taskfile,
+ * \brief only read when these data aren't set by type-in options
+ * \param _path taskfile path
+ */
+void ARTask::read_taskfile( PATH_t _path ){
+    if ( !is_using_taskfile )
+    {
+        return;
+        // here needs to be completed with the status not set a taskfile but function be triggered
+    }
+
+    Json::Reader rJson; // Json reader
+    Json::Value artask_json;
+    std::ifstream rFile; // file reader
+
+    rFile.open( _path.c_str() , std::ios::in );
+    rJson.parse( rFile , artask_json , 0 );
+
+    rFile.close();
+
+#pragma region read_taskfile
+
+    if ( !is_board_set && artask_json.isMember( "arduino_board" ) ) // read board type
+    {
+        if ( !artask_json["arduino_board"].asString().empty() ) // this key isn't empty
+        {
+            is_board_set = _SET_;
+            arduino_board = artask_json["arduino_board"].asString();
+        }
+    }
+
+    if ( !is_serial_port_set && artask_json.isMember( "port" ) ) // read serial port
+    {
+        if ( !artask_json["port"].asString().empty() ) // this key isn't empty
+        {
+            is_serial_port_set = _SET_;
+            serial_port = artask_json["port"].asString();
+        }
+    }
+
+    if ( !is_arduino_file_set && artask_json.isMember( "arduino_file" ) ) // read arduino program
+    {
+        if ( !artask_json["arduino_file"].asString().empty() ) // this key isn't empty
+        {
+            is_arduino_file_set = _SET_;
+            arduino_file_path = artask_json["arduino_file"].asString();
+        }
+    }
+
+#pragma endregion read_taskfile
+
+    artask_json.clear();
+    return;
+
+}
+
 #pragma endregion public_function
 
 #pragma region private_function

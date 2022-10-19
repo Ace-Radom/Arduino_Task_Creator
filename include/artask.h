@@ -39,14 +39,22 @@
  * 
  * 2022.10.18 change var \c is_file_set name to \c is_arduino_file_set due to missunderstanding
  *            move \c PATH_t to @a collectinfo.h
+ * 2022.10.19 new \def \c void \c read_taskfile read datas in taskfile
+ *                     \c void \c start send command to @a arduino_debug
+ *                     \c void \c make_command write command from taskfile to \c command
+ *                     \c command the command needs to be sended to @a arduino_debug
  */
 
 #ifndef _ARTASK_H_
 #define _ARTASK_H_
 
 #include<string>
+#include<fstream>
+
 #include<collectinfo.h>
 #include<filepath.h>
+
+#include<json/json.h>
 
 #define _verify_ 0x00
 #define _upload_ 0x01
