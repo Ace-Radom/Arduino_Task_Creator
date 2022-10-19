@@ -7,7 +7,7 @@
 set(src ${PROJECT_SOURCE_DIR}/src/cmdlib.cpp ${PROJECT_SOURCE_DIR}/src/collectinfo.cpp ${PROJECT_SOURCE_DIR}/src/artask.cpp ${PROJECT_SOURCE_DIR}/src/filepath.cpp)
 # set src
 
-message(STATUS ${src})
+message(STATUS "src list: " ${src})
 # show src list
 
 set(SRC_LIST ${src} PARENT_SCOPE)
