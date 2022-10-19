@@ -25,5 +25,6 @@
         }
     ],
     "arduino_board": "arduino:avr:uno",
-    "port": "COM3"
+    "port": "COM3",
+    "arduino_file": ""
 }
