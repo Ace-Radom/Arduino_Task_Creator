@@ -47,3 +47,6 @@ target_link_libraries(Arduino_Task libjsoncpp.a libjsoncpp.dll.a gflags liblibcs
 
 file(COPY ${PROJECT_SOURCE_DIR}/src/py/dist/com_serial.exe DESTINATION ${PROJECT_SOURCE_DIR}/bin)
 # copy com_serial.exe (installed by pyinstaller from .\src\py\com_serial.py) to .\bin
+
+file(COPY ${PROJECT_SOURCE_DIR}/src/py/dist/com_reg.exe DESTINATION ${PROJECT_SOURCE_DIR}/bin)
+# copy com_reg.exe (installed by pyinstaller from .\src\py\com_reg.py) to .\bin
