@@ -39,7 +39,7 @@ def get_com_reg():
         while True:
             _name , _port , _type = win32api.RegEnumValue( reg_key , _temp )
             # get data from Registry
-            print( "name:{} port:{} type:{}".format( _name , _port , _type ) )
+#           print( "name:{} port:{} type:{}".format( _name , _port , _type ) )
 
             ports.append( com_data() ) # link one com_data()
             ports[_temp].name  = _name
