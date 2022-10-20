@@ -25,5 +25,8 @@ test.*
 *.log
 # shield log file
 
+*.atctemp
+# shield temp file created by Arduino_Task and python programs
+
 *.spec
 # shield python install file
