@@ -13,6 +13,9 @@ build
 bin
 # shield bin folder for .exe files
 
+dist
+# shield dist folder created by pyinstaller
+
 test.*
 # shield test program
 
@@ -21,3 +24,6 @@ test.*
 
 *.log
 # shield log file
+
+*.spec
+# shield python install file
