@@ -11,7 +11,9 @@ set(src ${PROJECT_SOURCE_DIR}/src/cmdlib.cpp ${PROJECT_SOURCE_DIR}/src/collectin
 # set src
 
 message(STATUS "src list: " ${src})
-# show src list
+# message src list
+
+message(STATUS "python file list: " ${PY_SRC_LIST})
 
 set(SRC_LIST ${src} PARENT_SCOPE)
 # set SRC_LIST = src and as a global variable, in order to link these src files in .\CMakeLists.txt
