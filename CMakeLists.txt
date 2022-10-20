@@ -35,6 +35,7 @@ set(SRC_MAIN test.cpp)
 # use to test functions
 
 message(STATUS "main file: " ${SRC_MAIN})
+# message cpp main file
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin)
 # set .exe output folder as .\bin
