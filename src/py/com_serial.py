@@ -5,7 +5,7 @@
 # ===============================================
 #
 # start time: 2022.10.20
-# 2022.10.20
+# 2022.10.20 finish temp file writing part, end of this program (if don't have any further requests)
 
 # check serial port for Arduino in windows device manager
 # using module: serial, pyserial, time
