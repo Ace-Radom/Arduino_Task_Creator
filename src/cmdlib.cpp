@@ -17,6 +17,7 @@
  *                                              no "\bin", therefore erase causes mem problems
  *                   change to use __exepath__ in @a collectinfo.h (namespace clinfo) to point cmdlib.json and that fixes this bug
  * 2022.10.21 finish function \c show_serial_device and tested (passed)
+ *                            \c show_serial_port_reg and tested (passed)
  */
 
 #include<cmdlib.h>
@@ -81,7 +82,8 @@ void cmdlib::show_help(){
     setw_print_help( cmdlib_json["-t"][_option_].asString() , cmdlib_json["-t"][_expression_].asString() );
     setw_print_help( cmdlib_json["-b"][_option_].asString() , cmdlib_json["-b"][_expression_].asString() );
     setw_print_help( cmdlib_json["-p"][_option_].asString() , cmdlib_json["-p"][_expression_].asString() );
-    setw_print_help( cmdlib_json["-device"][_option_].asString() , cmdlib_json["-device"][_expression_].asString());
+    setw_print_help( cmdlib_json["-device"][_option_].asString() , cmdlib_json["-device"][_expression_].asString() );
+    setw_print_help( cmdlib_json["-regport"][_option_].asString() , cmdlib_json["-regport"][_expression_].asString() );
     // print all options' comment
 
 #undef _option_
@@ -132,9 +134,9 @@ void cmdlib::show_serial_device(){
         }
     }
 
-    std::cout << "  Port        Serial Device" << std::endl;
-    std::cout << "  ----        -------------" << std::endl;
-    // print list begin
+    std::cout << "  Serial Device            Port" << std::endl;
+    std::cout << "  -------------            ----" << std::endl;
+    // print list head
 
     while ( FOREVER )
     {
@@ -148,7 +150,7 @@ void cmdlib::show_serial_device(){
         uint16_t _pos_temp = _print_port_temp.find( '-' );
         // find where '-' is (to devide port and serial device part)
 
-        std::cout << "  " << std::left << std::setw( 12 ) << _print_port_temp.substr( 0 , _pos_temp - 1 ) << _print_port_temp.substr( _pos_temp + 2 ) << std::endl;
+        std::cout << "  " << std::left << std::setw( 25 ) << _print_port_temp.substr( _pos_temp + 2 ) << _print_port_temp.substr( 0 , _pos_temp - 1 ) << std::endl;
         // print serial port and serial device
         // serial port ends at two digits before '-' and serial device part begins at two digits after that
     }
@@ -156,5 +158,57 @@ void cmdlib::show_serial_device(){
 #undef MAX_READIN_CHARS
 #undef FOREVER
     
+    std::cout << std::endl;
+    return;
+}
+
+/**
+ * \brief check and show serial ports from Registry
+ */
+void cmdlib::show_serial_port_reg(){
+    system( ".\\com_reg" );
+    // call com_reg
+
+#define MAX_READIN_CHARS 1024
+#define FOREVER 1
+
+    std::ifstream rFile;
+    rFile.open( "com_reg.atctemp" , std::ios::in );
+    // read temp file created by com_serial
+
+    char _rFile_temp[MAX_READIN_CHARS];
+    
+    while ( FOREVER )
+    {       
+        rFile.getline( _rFile_temp , MAX_READIN_CHARS );
+        if ( _rFile_temp[0] == '~' && _rFile_temp[1] == '~' ) // found "Begin serial device part"
+        {
+            break;
+        }
+    }
+
+    std::cout << "  Registry name            Port" << std::endl;
+    std::cout << "  -------------            ----" << std::endl;
+    // print list head
+
+    while ( FOREVER )
+    {
+        rFile.getline( _rFile_temp , MAX_READIN_CHARS );
+        if ( _rFile_temp[0] == '~' && _rFile_temp[1] == '~' ) // found "End serial device part"
+        {
+            break;
+        }
+        
+        std::string _print_port_temp( _rFile_temp );
+        uint16_t _pos_temp = _print_port_temp.find( ' ' );
+        std::cout << "  " << std::left << std::setw( 25 ) << _print_port_temp.substr( 0 , _pos_temp ) << _print_port_temp.substr( _pos_temp + 1  , _print_port_temp.rfind( ' ' ) - _pos_temp ) << std::endl;
+        // print Registry name and serial port
+        // two space divide Registry name, serial port and Registry type
+    }
+
+#undef MAX_READIN_CHARS
+#undef FOREVER
+
+    std::cout << std::endl;
     return;
 }
