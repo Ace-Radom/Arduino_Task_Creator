@@ -19,3 +19,5 @@ use find_package in .\CMakeLists.txt
 compiled by mingw32-make from CSerialPort-src 4.2.0 (https://github.com/itas109/CSerialPort/releases/tag/v4.2.0)
 
 linked .\lib\CSerialPort\lib\liblibcserialport.dll.a in .\CMakeLists.txt
+
+* 2022.10.21 delete CSerialPort static lib

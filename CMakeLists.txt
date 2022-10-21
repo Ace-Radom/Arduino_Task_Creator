@@ -25,9 +25,11 @@ link_directories(${PROJECT_SOURCE_DIR}/lib/jsoncpp/lib)
 find_package(gflags REQUIRED)
 # find gflags package
 
-include_directories(${PROJECT_SOURCE_DIR}/lib/CSerialPort/include)
-link_directories(${PROJECT_SOURCE_DIR}/lib/CSerialPort/lib)
+#include_directories(${PROJECT_SOURCE_DIR}/lib/CSerialPort/include)
+#link_directories(${PROJECT_SOURCE_DIR}/lib/CSerialPort/lib)
 # include headers and link CSerialPort static lib
+
+# CSerialPort static lib is no longer used because of the add of com_serial.py and com_reg.py
 
 #set(SRC_MAIN main.cpp)
 
@@ -43,8 +45,13 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin)
 add_executable(Arduino_Task ${SRC_LIST} ${SRC_MAIN})
 # link src files and main program
 
-target_link_libraries(Arduino_Task libjsoncpp.a libjsoncpp.dll.a gflags liblibcserialport.dll.a)
-# link jsoncpp static lib, gflags static lib and CSerialPort static libto target
+#target_link_libraries(Arduino_Task libjsoncpp.a libjsoncpp.dll.a gflags liblibcserialport.dll.a)
+# link jsoncpp static lib, gflags static lib and CSerialPort static lib to target
+
+# CSerialPort static lib is no longer used because of the add of com_serial.py and com_reg.py
+
+target_link_libraries(Arduino_Task libjsoncpp.a libjsoncpp.dll.a gflags)
+# link jsoncpp static lib and gflags static lib to target
 
 file(COPY ${PROJECT_SOURCE_DIR}/src/py/dist/com_serial.exe DESTINATION ${PROJECT_SOURCE_DIR}/bin)
 # copy com_serial.exe (installed by pyinstaller from .\src\py\com_serial.py) to .\bin
