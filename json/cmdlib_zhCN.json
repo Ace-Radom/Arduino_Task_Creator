@@ -27,8 +27,12 @@
         "-b xxx",
         "设置Arduino开发板 (例如: arduino:avr:uno)"
     ],
-    "-p":[
+    "-p": [
         "-p xxx",
         "设置串口 (例如: COM3)"
+    ],
+    "-check": [
+        "-check",
+        "检查并显示串口设备"
     ]
 }

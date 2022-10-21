@@ -28,6 +28,7 @@ DEFINE_string( u , "" , "-u [std::string / file name] upload Arduino program" );
 DEFINE_string( t , "" , "-t [std::string / file name] open task file folder (to find arduino.json here)" );
 DEFINE_string( b , "" , "-b [std::string / board type] set Arduino board" );
 DEFINE_string( p , "" , "-b [std::string / serial port] set serial port" );
+DEFINE_bool( check , false , "-check [bool] check and show serial device" );
 
 #pragma endregion gflags_def
 
@@ -78,6 +79,7 @@ void cmdlib::show_help(){
     setw_print_help( cmdlib_json["-t"][_option_].asString() , cmdlib_json["-t"][_expression_].asString() );
     setw_print_help( cmdlib_json["-b"][_option_].asString() , cmdlib_json["-b"][_expression_].asString() );
     setw_print_help( cmdlib_json["-p"][_option_].asString() , cmdlib_json["-p"][_expression_].asString() );
+    setw_print_help( cmdlib_json["-check"][_option_].asString() , cmdlib_json["-check"][_expression_].asString());
     // print all options' comment
 
 #undef _option_
@@ -100,5 +102,13 @@ void cmdlib::show_help(){
 void cmdlib::setw_print_help( std::string __option , std::string __expression ){
     std::cout << "  " << std::left << std::setw( 12 ) << __option;
     std::cout                                                     << __expression << std::endl;
+    return;
+}
+
+/**
+ * 
+ */
+void cmdlib::show_serial_device(){
+    system( ".\\com_serial" );
     return;
 }

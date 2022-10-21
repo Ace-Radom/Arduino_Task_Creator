@@ -27,8 +27,12 @@
         "-b xxx",
         "set Arduino board (e.g. arduino:avr:uno)"
     ],
-    "-p":[
+    "-p": [
         "-p xxx",
         "set serial port (e.g. COM3)"
+    ],
+    "-check": [
+        "-check",
+        "check and show serial device"
     ]
 }
