@@ -18,6 +18,8 @@
  *      \def \c void \c get_file_permission get the permission this user has on this file
  * 
  * start time 2022.10.18
+ * 
+ * 2022.10.21 add \c #pragma \c once after header protection (unknown reason causes redefinition for \c struct \c fp without this pragma)
  */
 
 #ifndef _FILEPATH_H_
