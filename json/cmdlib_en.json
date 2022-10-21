@@ -31,8 +31,8 @@
         "-p xxx",
         "set serial port (e.g. COM3)"
     ],
-    "-check": [
-        "-check",
+    "-device": [
+        "-device",
         "check and show serial device"
     ]
 }

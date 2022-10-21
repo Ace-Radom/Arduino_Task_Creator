@@ -19,7 +19,7 @@
  * 2022.10.13 new \include gflags lib (in @a gflags.h for analysising options)
  *            new \def gflags options, defined in @a cmdlib.cpp region \c gflags_def
  *                                     declared in @a cmdlib.h region \c gflags_dec
- * 2022.10.21 new \def check opition
+ * 2022.10.21 new \def device opition
  *            new \def \c void \c show_serial_device check and show serial device
  */
 
@@ -53,7 +53,7 @@ DECLARE_string( u );
 DECLARE_string( t );
 DECLARE_string( b );
 DECLARE_string( p );
-DECLARE_bool( check );
+DECLARE_bool( device );
 
 #pragma endregion gflags_dec
 
