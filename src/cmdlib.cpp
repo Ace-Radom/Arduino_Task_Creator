@@ -110,5 +110,48 @@ void cmdlib::setw_print_help( std::string __option , std::string __expression ){
  */
 void cmdlib::show_serial_device(){
     system( ".\\com_serial" );
+    // call com_serial
+
+#define MAX_READIN_CHARS 1024
+#define FOREVER 1
+
+    std::ifstream rFile;
+    rFile.open( "com_serial.atctemp" , std::ios::in );
+    // read temp file created by com_serial
+
+    char _rFile_temp[MAX_READIN_CHARS];
+    
+    while ( FOREVER )
+    {       
+        rFile.getline( _rFile_temp , MAX_READIN_CHARS );
+        if ( _rFile_temp[0] == '~' && _rFile_temp[1] == '~' ) // found "Begin serial device part"
+        {
+            break;
+        }
+    }
+
+    std::cout << "  Port        Serial Device" << std::endl;
+    std::cout << "  ----        -------------" << std::endl;
+    // print list begin
+
+    while ( FOREVER )
+    {
+        rFile.getline( _rFile_temp , MAX_READIN_CHARS );
+        if ( _rFile_temp[0] == '~' && _rFile_temp[1] == '~' ) // found "End serial device part"
+        {
+            break;
+        }
+        
+        std::string _print_port_temp( _rFile_temp );
+        uint16_t _pos_temp = _print_port_temp.find( '-' );
+        // find where '-' is (to devide port and serial device part)
+
+        std::cout << "  " << std::left << std::setw( 12 ) << _print_port_temp.substr( 0 , _pos_temp - 1 ) << _print_port_temp.substr( _pos_temp + 2 ) << std::endl;
+        // print serial port and serial device
+    }
+    
+#undef MAX_READIN_CHARS
+#undef FOREVER
+    
     return;
 }
