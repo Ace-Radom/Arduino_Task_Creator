@@ -10,6 +10,7 @@
  *      \def \c void \c show_help show help page in shell
  *      \def \c void \c setw_print_help print options and expressions in help page in order
  *      \def \c void \c show_serial_device check and show serial device
+ *      \def \c void \c show_serial_ports_reg check and show serial ports from Registry
  * 
  * start time: 2022.10.06
  * 
@@ -21,6 +22,8 @@
  *                                     declared in @a cmdlib.h region \c gflags_dec
  * 2022.10.21 new \def device opition
  *            new \def \c void \c show_serial_device check and show serial device
+ *            new \def regport opition
+ *            new \def \c void \c show_serial_ports_reg check and show serial ports from Registry
  */
 
 #ifndef _CMDLIB_H_
@@ -54,6 +57,7 @@ DECLARE_string( t );
 DECLARE_string( b );
 DECLARE_string( p );
 DECLARE_bool( device );
+DECLARE_bool( regport );
 
 #pragma endregion gflags_dec
 
@@ -63,6 +67,7 @@ namespace cmdlib{
     void setw_print_help( std::string , std::string );
 
     void show_serial_device();
+    void show_serial_port_reg();
 
 } // namespace cmdlib
 

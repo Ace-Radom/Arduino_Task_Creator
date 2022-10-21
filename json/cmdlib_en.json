@@ -34,5 +34,9 @@
     "-device": [
         "-device",
         "check and show serial device"
+    ],
+    "-regport": [
+        "-regport",
+        "check and show serial ports searched from Registry"
     ]
 }

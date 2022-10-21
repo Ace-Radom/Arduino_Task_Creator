@@ -30,6 +30,7 @@ DEFINE_string( t , "" , "-t [std::string / file name] open task file folder (to 
 DEFINE_string( b , "" , "-b [std::string / board type] set Arduino board" );
 DEFINE_string( p , "" , "-b [std::string / serial port] set serial port" );
 DEFINE_bool( device , false , "-device [bool] check and show serial device" );
+DEFINE_bool( regport , false , "-regport [bool] check and show serial ports from Registry" );
 
 #pragma endregion gflags_def
 
