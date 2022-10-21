@@ -59,6 +59,12 @@ DECLARE_string( p );
 DECLARE_bool( device );
 DECLARE_bool( regport );
 
+static std::string gHelp;
+static std::string gVersion;
+
+std::string gPrint_pro_help();
+std::string gPrint_version();
+
 #pragma endregion gflags_dec
 
 namespace cmdlib{

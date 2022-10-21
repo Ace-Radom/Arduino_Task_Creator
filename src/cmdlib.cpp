@@ -29,9 +29,31 @@ DEFINE_string( v , "" , "-v [std::string / file name] verify Arduino program" );
 DEFINE_string( u , "" , "-u [std::string / file name] upload Arduino program" );
 DEFINE_string( t , "" , "-t [std::string / file name] open task file folder (to find arduino.json here)" );
 DEFINE_string( b , "" , "-b [std::string / board type] set Arduino board" );
-DEFINE_string( p , "" , "-b [std::string / serial port] set serial port" );
+DEFINE_string( p , "" , "-p [std::string / serial port] set serial port" );
 DEFINE_bool( device , false , "-device [bool] check and show serial device" );
 DEFINE_bool( regport , false , "-regport [bool] check and show serial ports from Registry" );
+
+std::string gPrint_pro_help(){
+    gHelp.append( "Arduino_Task_Creator Pro_Help \n" );
+/*
+         .append( "{no option} [bool] show help page \n" )
+         .append( "-? [bool] show help page \n" )
+         .append( "-h [bool] show help page \n" )
+         .append( "-v [std::string / file name] verify Arduino program" )
+         .append( "-u [std::string / file name] upload Arduino program \n" )
+         .append( "-t [std::string / file name] open task file folder (to find arduino.json here) \n" )
+         .append( "-b [std::string / board type] set Arduino board \n" )
+         .append( "-p [std::string / serial port] set serial port \n" )
+         .append( "-device [bool] check and show serial device \n" )
+         .append( "-regport [bool] check and show serial ports from Registry \n" );
+*/
+    return gHelp;
+}
+
+std::string gPrint_version(){
+    gVersion = "1.0.0";
+    return gVersion;
+}
 
 #pragma endregion gflags_def
 
