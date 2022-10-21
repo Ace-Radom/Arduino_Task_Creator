@@ -106,7 +106,7 @@ void cmdlib::setw_print_help( std::string __option , std::string __expression ){
 }
 
 /**
- * 
+ * \brief check and show serial device
  */
 void cmdlib::show_serial_device(){
     system( ".\\com_serial" );
@@ -148,8 +148,9 @@ void cmdlib::show_serial_device(){
 
         std::cout << "  " << std::left << std::setw( 12 ) << _print_port_temp.substr( 0 , _pos_temp - 1 ) << _print_port_temp.substr( _pos_temp + 2 ) << std::endl;
         // print serial port and serial device
+        // serial port ends at two digits before '-' and serial device part begins at two digits after that
     }
-    
+
 #undef MAX_READIN_CHARS
 #undef FOREVER
     
