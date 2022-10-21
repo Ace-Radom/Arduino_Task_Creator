@@ -16,6 +16,7 @@
  *                                              that's because in this case in __cwd__ there's
  *                                              no "\bin", therefore erase causes mem problems
  *                   change to use __exepath__ in @a collectinfo.h (namespace clinfo) to point cmdlib.json and that fixes this bug
+ * 2022.10.21 finish function \c show_serial_device and tested (passed)
  */
 
 #include<cmdlib.h>
