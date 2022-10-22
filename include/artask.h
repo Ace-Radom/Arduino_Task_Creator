@@ -24,6 +24,7 @@
  *          \def \c void \c pre_set pre-set all vars in class
  *          \def \c arduino_board board type of arduino
  *          \def \c serial_port serial port to connect to arduino board
+ *          \def \c void \c write_atccreatetasktemp_json write Arduino_Task_Creator Task create temp json
  *          \def \c void \c make_command write command from taskfile to \c command
  *          \def \c command the command needs to be sended to @a arduino_debug
  *          \def \c is_help_triggered judge if needs to show help. if typing in @a -h @a -? or not typing in any option, show help page and this will be \c _USING_
@@ -34,6 +35,10 @@
  *          \def \c is_verify_or_upload judge to use which command (status as \c _verify_ or \c _upload_ which defed here)
  *          \def \c arduino_file_path arduino program file path
  *          \def \c taskfile_path task file path
+ *          \def \c rJson
+ *          \def \c artask_json
+ *          \def \c rwFile
+ * \def \c std::string \c delete_jsontag_sign
  * 
  * start time: 2022.10.11
  * 
@@ -43,6 +48,8 @@
  *                     \c void \c start send command to @a arduino_debug
  *                     \c void \c make_command write command from taskfile to \c command
  *                     \c command the command needs to be sended to @a arduino_debug
+ * 2022.10.22 new \def \c std::string \c delete_jsontag_sign delete '$' and '{}' in @a arduino.json tag
+ *                \def \c void \c write_atccreatetasktemp_json write Arduino_Task_Creator Task create temp json
  */
 
 #ifndef _ARTASK_H_
@@ -50,6 +57,7 @@
 
 #include<string>
 #include<fstream>
+#include<iostream>
 
 #include<collectinfo.h>
 #include<filepath.h>
@@ -69,7 +77,7 @@ typedef bool STATUS_t;
 
 class ARTask{
     public:
-        ARTask();
+        ARTask( STATUS_t );
         
         void change_board( std::string );
         void change_serial_port( std::string );
@@ -77,15 +85,19 @@ class ARTask{
         void set_arduino_file( PATH_t );
         void set_verify_or_upload( STATUS_t );
 
-        void read_taskfile( PATH_t );
+        void read_taskfile();
 
         void start();
+
+        void test();
 
     private:
         void pre_set();
 
         std::string arduino_board;
         std::string serial_port;
+
+        void write_atccreatetasktemp_json();
 
         void make_command();
 
@@ -99,12 +111,19 @@ class ARTask{
         STATUS_t is_serial_port_set;
         STATUS_t is_arduino_file_set;
         STATUS_t is_verify_or_upload;
+        STATUS_t is_verify_or_upload_set;
 
 #pragma endregion status
 
         PATH_t arduino_file_path;
         PATH_t taskfile_path;
 
+        Json::Reader rJson; // Json reader
+        Json::Value artask_json;
+        std::fstream rwFile; // file reader / writer
+
 }; // class ARTast
+
+std::string delete_jsontag_sign( std::string );
 
 #endif
