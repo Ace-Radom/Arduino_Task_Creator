@@ -24,7 +24,7 @@
 
 #pragma region gflags_def
 
-DEFINE_bool    ( h       , false , "-? [bool] show help page"                                                       );
+DEFINE_bool    ( h       , false , "-h [bool] show help page"                                                       );
 DEFINE_string  ( v       , ""    , "-v [std::string / file name] verify Arduino program"                            );
 DEFINE_string  ( u       , ""    , "-u [std::string / file name] upload Arduino program"                            );
 DEFINE_string  ( t       , ""    , "-t [std::string / file name] open task file folder (to find arduino.json here)" );
@@ -34,7 +34,7 @@ DEFINE_bool    ( device  , false , "-device [bool] check and show serial device"
 DEFINE_bool    ( regport , false , "-regport [bool] check and show serial ports from Registry"                      );
 
 std::string gPrint_pro_help(){
-    gHelp.append( "Arduino_Task_Creator Pro_Help \n" );
+    gHelp.append( "Arduino_Task_Creator Help (Created by gflags) \n" );
     return gHelp;
 }
 
