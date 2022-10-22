@@ -50,14 +50,14 @@
 
 #pragma region gflags_dec
 
-DECLARE_bool( h );
-DECLARE_string( v );
-DECLARE_string( u );
-DECLARE_string( t );
-DECLARE_string( b );
-DECLARE_string( p );
-DECLARE_bool( device );
-DECLARE_bool( regport );
+DECLARE_bool    ( h       );
+DECLARE_string  ( v       );
+DECLARE_string  ( u       );
+DECLARE_string  ( t       );
+DECLARE_string  ( b       );
+DECLARE_string  ( p       );
+DECLARE_bool    ( device  );
+DECLARE_bool    ( regport );
 
 static std::string gHelp;
 static std::string gVersion;
