@@ -123,7 +123,7 @@ void cmdlib::setw_print_help( std::string __option , std::string __expression ){
  * \brief check and show serial device
  */
 void cmdlib::show_serial_device(){
-    system( ".\\com_serial" );
+    system( "com_serial" );
     // call com_serial
 
 #define MAX_READIN_CHARS 1024
@@ -176,7 +176,7 @@ void cmdlib::show_serial_device(){
  * \brief check and show serial ports from Registry
  */
 void cmdlib::show_serial_port_reg(){
-    system( ".\\com_reg" );
+    system( "com_reg" );
     // call com_reg
 
 #define MAX_READIN_CHARS 1024
